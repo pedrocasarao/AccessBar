@@ -13,7 +13,7 @@ import java.sql.*;
 
 public class ClienteDAO {
 
-    public static void createDB(String args[]) {
+    public static void createDB() {
         Connection c = null;
         try {
             Class.forName("org.sqlite.JDBC");
@@ -26,7 +26,7 @@ public class ClienteDAO {
 
     }
     
-    public static void creatTableCliente(String args[])
+    public static void startDBconnetion()
     {
         Connection c = null;
     Statement stmt = null;
@@ -36,13 +36,12 @@ public class ClienteDAO {
       System.out.println("Opened database successfully");
 
       stmt = c.createStatement();
-      String sql = "CREATE TABLE COMPANY " +
+      String sql = "CREATE TABLE CLIENTES " +
                    "(ID INT PRIMARY KEY     NOT NULL," +
                    " NAME           TEXT    NOT NULL, " + 
                    " CPF            INT     NOT NULL, " + 
-                   " IDADE          CHAR(50)     NOT NULL, " + 
-                   " ADDRESS        CHAR(50), " + 
-                   " SALARY         REAL)"; 
+                   " IDADE          INT     , " + 
+                   " CATEGORY       CHAR(50)";
       stmt.executeUpdate(sql);
       stmt.close();
       c.close();
