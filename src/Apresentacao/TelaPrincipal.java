@@ -10,7 +10,7 @@ package Apresentacao;
  * @author eduva
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+private String[] vip = {"Nenhum","Silver","Gold","Platinum"};
     /**
      * Creates new form TelaPrincipal
      */
@@ -27,56 +27,116 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        btnGenero = new javax.swing.ButtonGroup();
+        panelPrincipal = new javax.swing.JTabbedPane();
+        tabCadastro = new javax.swing.JPanel();
+        txtNome = new javax.swing.JTextField();
+        lblNome = new javax.swing.JLabel();
+        lblCPF = new javax.swing.JLabel();
+        txtCPF = new javax.swing.JFormattedTextField();
+        lblGenero = new javax.swing.JLabel();
+        btnMasculino = new javax.swing.JRadioButton();
+        btnFeminino = new javax.swing.JRadioButton();
+        lblVip = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        tabConsulta = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        txtNome.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(jButton1)
-                .addContainerGap(332, Short.MAX_VALUE))
+        lblNome.setText("NOME");
+
+        lblCPF.setText("CPF");
+
+        try {
+            txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        lblGenero.setText("GENERO");
+
+        btnGenero.add(btnMasculino);
+        btnMasculino.setText("Masculino");
+
+        btnGenero.add(btnFeminino);
+        btnFeminino.setText("Feminino");
+
+        lblVip.setText("VIP");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout tabCadastroLayout = new javax.swing.GroupLayout(tabCadastro);
+        tabCadastro.setLayout(tabCadastroLayout);
+        tabCadastroLayout.setHorizontalGroup(
+            tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCadastroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNome)
+                    .addComponent(txtCPF)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroLayout.createSequentialGroup()
+                        .addGroup(tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMasculino)
+                            .addComponent(lblNome)
+                            .addComponent(lblCPF)
+                            .addComponent(btnFeminino)
+                            .addComponent(lblGenero))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addGroup(tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVip)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(106, 106, 106))
+        tabCadastroLayout.setVerticalGroup(
+            tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabCadastroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCPF)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGenero)
+                    .addComponent(lblVip))
+                .addGap(4, 4, 4)
+                .addGroup(tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMasculino)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnFeminino)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        panelPrincipal.addTab("Cadastro", tabCadastro);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout tabConsultaLayout = new javax.swing.GroupLayout(tabConsulta);
+        tabConsulta.setLayout(tabConsultaLayout);
+        tabConsultaLayout.setHorizontalGroup(
+            tabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 504, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        tabConsultaLayout.setVerticalGroup(
+            tabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 262, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        panelPrincipal.addTab("Consulta", tabConsulta);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(panelPrincipal)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(panelPrincipal)
         );
 
         pack();
@@ -118,9 +178,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JRadioButton btnFeminino;
+    private javax.swing.ButtonGroup btnGenero;
+    private javax.swing.JRadioButton btnMasculino;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel lblCPF;
+    private javax.swing.JLabel lblGenero;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblVip;
+    private javax.swing.JTabbedPane panelPrincipal;
+    private javax.swing.JPanel tabCadastro;
+    private javax.swing.JPanel tabConsulta;
+    private javax.swing.JFormattedTextField txtCPF;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
