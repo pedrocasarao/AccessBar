@@ -38,7 +38,7 @@ public class ClienteDAO {
       System.out.println("Opened database successfully");
 
       stmt = c.createStatement();
-      String sql = "INSERT INTO cliente (id_cliente,nome,cpf,gereno,,idade,status) " +
+      String sql = "INSERT INTO cliente (id_cliente,"+cliente.getNome()+","+cliente.getCpf()+","+cliente.getGenero()+","+cliente.getIdade()+","+cliente.getStatus()+")" +
                    "VALUES (1,'Pedro de Oaca' ,'01585840023', 'M', 23, 'gold' );"; 
       stmt.executeUpdate(sql);
 
@@ -51,8 +51,9 @@ public class ClienteDAO {
     }
     System.out.println("Records created successfully");
   }
-   public  void updateDB( String args[] )
+   public  void updateDB( int posicaoDb)
   {
+      Cliente cli =new Cliente();
     Connection c = null;
     Statement stmt = null;
     try {
@@ -62,7 +63,7 @@ public class ClienteDAO {
       System.out.println("Opened database successfully");
 
       stmt = c.createStatement();
-      String sql = "UPDATE cliente set idade = 50 where ID=1;";
+      String sql = "UPDATE cliente set"+ cli.getIdade()+"= 50 where ID="+posicaoDb+";";
       stmt.executeUpdate(sql);
       c.commit();
 

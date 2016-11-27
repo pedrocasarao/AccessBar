@@ -14,6 +14,8 @@ public class Cliente {
     private char genero;
     private int idade;
     private Categorias status;
+   
+    public Cliente(){}
     
     public Cliente(String nome, String cpf, char genero, int idade){
         if(validaDados(nome, cpf, genero, idade)) throw new IllegalArgumentException("Dados inválidos");
@@ -24,15 +26,24 @@ public class Cliente {
         this.status = null;
         
     }
-    private String getNome(){
+   public String getNome(){
         return nome;
     }
-    private String getCpf(){
+   public String getCpf(){
         return cpf;
     }
-    private char getGenero(){
+   public  char getGenero(){
         return genero;
     }
+
+    public Categorias getStatus() {
+        return status;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+   
  
     public String toString(){
         return "Cliente{ nome=" +nome+ ",cpf=" + cpf + ",genero=" + genero + ",idade=" + idade + '}';
