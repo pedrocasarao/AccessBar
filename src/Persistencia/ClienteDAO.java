@@ -9,6 +9,7 @@ package Persistencia;
  *
  * @author 05200189
  */
+import Negocio.Clientes;
 import java.sql.*;
 
 public class ClienteDAO {
@@ -26,7 +27,7 @@ public class ClienteDAO {
 
     }
      
-  public void insert( String cliente)
+  public void insert(Clientes cliente)
   {
     Connection c = null;
     Statement stmt = null;
@@ -37,20 +38,8 @@ public class ClienteDAO {
       System.out.println("Opened database successfully");
 
       stmt = c.createStatement();
-      String sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
-                   "VALUES (1, 'Paul', 32, 'California', 20000.00 );"; 
-      stmt.executeUpdate(sql);
-
-      sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
-            "VALUES (2, 'Allen', 25, 'Texas', 15000.00 );"; 
-      stmt.executeUpdate(sql);
-
-      sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
-            "VALUES (3, 'Teddy', 23, 'Norway', 20000.00 );"; 
-      stmt.executeUpdate(sql);
-
-      sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
-            "VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 );"; 
+      String sql = "INSERT INTO cliente (id_cliente,nome,cpf,gereno,,idade,status) " +
+                   "VALUES (1,'Pedro de Oaca' ,'01585840023', 'M', 23, 'gold' );"; 
       stmt.executeUpdate(sql);
 
       stmt.close();
@@ -73,22 +62,24 @@ public class ClienteDAO {
       System.out.println("Opened database successfully");
 
       stmt = c.createStatement();
-      String sql = "UPDATE COMPANY set SALARY = 25000.00 where ID=1;";
+      String sql = "UPDATE cliente set idade = 50 where ID=1;";
       stmt.executeUpdate(sql);
       c.commit();
 
-      ResultSet rs = stmt.executeQuery( "SELECT * FROM COMPANY;" );
+      ResultSet rs = stmt.executeQuery( "SELECT * FROM cliente;" );
       while ( rs.next() ) {
-         int id = rs.getInt("id");
-         String  name = rs.getString("name");
-         int age  = rs.getInt("age");
-         String  address = rs.getString("address");
-         float salary = rs.getFloat("salary");
-         System.out.println( "ID_CLIENTE = " + id );
-         System.out.println( "NAME = " + name );
-         System.out.println( "AGE = " + age );
-         System.out.println( "ADDRESS = " + address );
-         System.out.println( "SALARY = " + salary );
+         int id = rs.getInt("id_cliente");
+         String  nome = rs.getString("nome");
+         String cpf  = rs.getString("cpf");
+         String  genero = rs.getString("genero");
+         int idade = rs.getInt("idade");
+         String status = rs.getString("status");
+         System.out.println( "id_cliente= " + id );
+         System.out.println( "nome= " + nome );
+         System.out.println( "cpf = " + cpf );
+         System.out.println( "genero = " + genero );
+         System.out.println( "idade = " + idade );
+          System.out.println("status"+status);
          System.out.println();
       }
       rs.close();
@@ -101,4 +92,5 @@ public class ClienteDAO {
     System.out.println("Operation done successfully");
   }
 
+   
 }
