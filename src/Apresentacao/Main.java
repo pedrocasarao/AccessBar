@@ -19,7 +19,6 @@ public class Main {
         ClienteDAO clidb  = new  ClienteDAO();
         
         
-        clidb.startDBconnetion();
       
         
     }

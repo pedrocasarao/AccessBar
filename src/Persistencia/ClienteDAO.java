@@ -17,7 +17,7 @@ public class ClienteDAO {
         Connection c = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:test.db");
+            c = DriverManager.getConnection("jdbc:sqlite:cliente.ClienteDb.sqlite");
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
@@ -25,72 +25,14 @@ public class ClienteDAO {
         System.out.println("Opened database successfully");
 
     }
-    
-    public static void startDBconnetion()
-    {
-        Connection c = null;
-    Statement stmt = null;
-    try {
-      Class.forName("org.sqlite.JDBC");
-      c = DriverManager.getConnection("jdbc:sqlite:test.db");
-      System.out.println("Opened database successfully");
-
-      stmt = c.createStatement();
-      String sql = "CREATE TABLE CLIENTES " +
-                   "(ID INT PRIMARY KEY     NOT NULL," +
-                   " NAME           TEXT    NOT NULL, " + 
-                   " CPF            INT     NOT NULL, " + 
-                   " IDADE          INT     , " + 
-                   " CATEGORY       CHAR(50)";
-      stmt.executeUpdate(sql);
-      stmt.close();
-      c.close();
-    } catch ( Exception e ) {
-      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-      System.exit(0);
-    }
-    System.out.println("Table created successfully");
-    }
-    
-    public class SQLiteJDBC
-{
-  public  void createTable( )
-  {
-    Connection c = null;
-    Statement stmt = null;
-    try {
-      Class.forName("org.sqlite.JDBC");
-      c = DriverManager.getConnection("jdbc:sqlite:test.db");
-      System.out.println("Opened database successfully");
-
-      stmt = c.createStatement();
-      String sql = "CREATE TABLE COMPANY " +
-                   "(ID INT PRIMARY KEY     NOT NULL," +
-                   " NAME           TEXT    NOT NULL, " + 
-                   " AGE            INT     NOT NULL, " + 
-                   " ADDRESS        CHAR(50), " + 
-                   " SALARY         REAL)"; 
-      stmt.executeUpdate(sql);
-      stmt.close();
-      c.close();
-    } catch ( Exception e ) {
-      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-      System.exit(0);
-    }
-    System.out.println("Table created successfully");
-  }
-  
- }
-
-
-
+     
   public void insert( String cliente)
   {
     Connection c = null;
     Statement stmt = null;
     try {
       Class.forName("org.sqlite.JDBC");
-      c = DriverManager.getConnection("jdbc:sqlite:test.db");
+      c = DriverManager.getConnection("jdbc:sqlite:ClienteDb.sqlite");
       c.setAutoCommit(false);
       System.out.println("Opened database successfully");
 
@@ -126,7 +68,7 @@ public class ClienteDAO {
     Statement stmt = null;
     try {
       Class.forName("org.sqlite.JDBC");
-      c = DriverManager.getConnection("jdbc:sqlite:test.db");
+      c = DriverManager.getConnection("jdbc:sqlite:ClienteDb.sqlite");
       c.setAutoCommit(false);
       System.out.println("Opened database successfully");
 
@@ -142,7 +84,7 @@ public class ClienteDAO {
          int age  = rs.getInt("age");
          String  address = rs.getString("address");
          float salary = rs.getFloat("salary");
-         System.out.println( "ID = " + id );
+         System.out.println( "ID_CLIENTE = " + id );
          System.out.println( "NAME = " + name );
          System.out.println( "AGE = " + age );
          System.out.println( "ADDRESS = " + address );
