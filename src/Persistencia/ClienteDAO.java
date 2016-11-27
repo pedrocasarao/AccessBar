@@ -9,7 +9,7 @@ package Persistencia;
  *
  * @author 05200189
  */
-import Negocio.Clientes;
+import Negocio.Cliente;
 import java.sql.*;
 
 public class ClienteDAO {
@@ -27,7 +27,7 @@ public class ClienteDAO {
 
     }
      
-  public void insert(Clientes cliente)
+  public void insert(Cliente cliente)
   {
     Connection c = null;
     Statement stmt = null;
@@ -71,7 +71,7 @@ public class ClienteDAO {
          int id = rs.getInt("id_cliente");
          String  nome = rs.getString("nome");
          String cpf  = rs.getString("cpf");
-         String  genero = rs.getString("genero");
+         char  genero = rs.getString("genero").charAt(0);
          int idade = rs.getInt("idade");
          String status = rs.getString("status");
          System.out.println( "id_cliente= " + id );
