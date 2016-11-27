@@ -5,6 +5,7 @@
  */
 package Apresentacao;
 
+import Negocio.Clientes;
 import Persistencia.ClienteDAO;
 /**
  *
@@ -16,9 +17,12 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Clientes cliente = new Clientes("Pedro", "12312312312", "M", 22);
         ClienteDAO clidb  = new  ClienteDAO();
-        
-        
+        clidb.createConnection();
+        System.out.println("----------");
+        clidb.insert(cliente);
+              
       
         
     }
