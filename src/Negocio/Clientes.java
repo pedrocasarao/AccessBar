@@ -10,16 +10,18 @@ package Negocio;
  * @author 08203013
  */
 public class Clientes {
-    private String nome, cpf, genero;
+    private String nome, cpf;
+    private char genero;
     private int idade;
-    private Categorias Status;
+    private Categorias status;
     
-    public Clientes(String nome, String cpf, String genero, int idade){
-        validaDados(nome, cpf, genero, idade);
+    public Clientes(String nome, String cpf, char genero, int idade){
+        if(validaDados(nome, cpf, genero, idade)) throw new IllegalArgumentException("Dados inválidos");
         this.nome=nome;
         this.cpf=cpf;
         this.genero=genero;
         this.idade=idade;
+        this.status = null;
         
     }
     private String getNome(){
@@ -28,14 +30,14 @@ public class Clientes {
     private String getCpf(){
         return cpf;
     }
-    private String getGenero(){
+    private char getGenero(){
         return genero;
     }
  
     public String toString(){
         return "Cliente{ nome=" +nome+ ",cpf=" + cpf + ",genero=" + genero + ",idade=" + idade + '}';
     }
-    private void validaDados(String nome, String cpf, String genero, int idade) {
-        
+    private boolean validaDados(String nome, String cpf, char genero, int idade) {
+        return(!nome.equals("")) && (cpf.length() == 11) &&(genero == 'M' || genero == 'F') && (idade > 0 || idade < 120); 
     }
 }
