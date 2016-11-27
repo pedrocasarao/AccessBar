@@ -36,6 +36,6 @@ public class Clientes {
         return "Cliente{ nome=" +nome+ ",cpf=" + cpf + ",genero=" + genero + ",idade=" + idade + '}';
     }
     private void validaDados(String nome, String cpf, String genero, int idade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 }
