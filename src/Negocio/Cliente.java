@@ -9,13 +9,13 @@ package Negocio;
  *
  * @author 08203013
  */
-public class Clientes {
+public class Cliente {
     private String nome, cpf;
     private char genero;
     private int idade;
     private Categorias status;
     
-    public Clientes(String nome, String cpf, char genero, int idade){
+    public Cliente(String nome, String cpf, char genero, int idade){
         if(validaDados(nome, cpf, genero, idade)) throw new IllegalArgumentException("Dados inválidos");
         this.nome=nome;
         this.cpf=cpf;
