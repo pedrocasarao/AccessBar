@@ -20,11 +20,11 @@ public class Main {
         Cliente cliente = new Cliente("Pedro", "123123123120", 'M', 22);
         ClienteDAO clidb  = new  ClienteDAO();
         clidb.createConnection();
-        System.out.println("---teste  insert----");
-        clidb.insert(cliente);
-              
+     //   System.out.println("---teste  insert----");
+    //    clidb.insert(cliente);
+        System.out.println("---- UPDATE------");       
       
-        
+        clidb.updateDB(0);
     }
     
 }

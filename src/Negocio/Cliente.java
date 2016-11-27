@@ -14,6 +14,8 @@ public class Cliente {
     private char genero;
     private int idade;
     private Categorias status;
+   
+    public Cliente(){}
     
     public Cliente(String nome, String cpf, char genero, int idade){
         if(validaDados(nome, cpf, genero, idade)) throw new IllegalArgumentException("Dados inválidos");
