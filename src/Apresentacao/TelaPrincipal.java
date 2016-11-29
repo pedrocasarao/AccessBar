@@ -5,12 +5,17 @@
  */
 package Apresentacao;
 
+import Negocio.Cliente;
+import Persistencia.ClienteDAO;
+
 /**
  *
  * @author eduva
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 private String[] vip = {"Nenhum","Silver","Gold","Platinum"};
+ClienteDAO banco = new ClienteDAO();
+Facede face = Facede.getInstance();
     /**
      * Creates new form TelaPrincipal
      */
@@ -39,6 +44,7 @@ private String[] vip = {"Nenhum","Silver","Gold","Platinum"};
         btnFeminino = new javax.swing.JRadioButton();
         lblVip = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         tabConsulta = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,6 +73,13 @@ private String[] vip = {"Nenhum","Silver","Gold","Platinum"};
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jButton1.setText("Adicionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tabCadastroLayout = new javax.swing.GroupLayout(tabCadastro);
         tabCadastro.setLayout(tabCadastroLayout);
         tabCadastroLayout.setHorizontalGroup(
@@ -88,6 +101,10 @@ private String[] vip = {"Nenhum","Silver","Gold","Platinum"};
                             .addComponent(lblVip)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(74, 74, 74))
         );
         tabCadastroLayout.setVerticalGroup(
             tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +127,9 @@ private String[] vip = {"Nenhum","Silver","Gold","Platinum"};
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnFeminino)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(34, 34, 34))
         );
 
         panelPrincipal.addTab("Cadastro", tabCadastro);
@@ -141,6 +160,19 @@ private String[] vip = {"Nenhum","Silver","Gold","Platinum"};
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(face.verificaNome(txtNome.getText())&&face.verificacpf(txtCPF.getText())&&face.verificaIdade(20)){
+           Cliente cliente = null;
+            if(btnFeminino.isEnabled())
+            {
+             cliente =  new  Cliente(txtNome.getText(),txtCPF.getText(),'F',20);    
+            }else{
+             cliente =  new  Cliente(txtNome.getText(),txtCPF.getText(),'M',20);
+            }
+            banco.insert(cliente);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,6 +213,7 @@ private String[] vip = {"Nenhum","Silver","Gold","Platinum"};
     private javax.swing.JRadioButton btnFeminino;
     private javax.swing.ButtonGroup btnGenero;
     private javax.swing.JRadioButton btnMasculino;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblGenero;

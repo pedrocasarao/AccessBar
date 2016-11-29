@@ -18,7 +18,7 @@ public class Cliente {
     public Cliente(){}
     
     public Cliente(String nome, String cpf, char genero, int idade){
-        if(validaDados(nome, cpf, genero, idade)) throw new IllegalArgumentException("Dados inválidos");
+       
         this.nome=nome;
         this.cpf=cpf;
         this.genero=genero;
@@ -48,7 +48,5 @@ public class Cliente {
     public String toString(){
         return "Cliente{ nome=" +nome+ ",cpf=" + cpf + ",genero=" + genero + ",idade=" + idade + '}';
     }
-    private boolean validaDados(String nome, String cpf, char genero, int idade) {
-        return(!nome.equals("")) && (cpf.length() == 11) &&(genero == 'M' || genero == 'F') && (idade > 0 || idade < 120); 
-    }
+  
 }
