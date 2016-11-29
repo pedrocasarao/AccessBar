@@ -62,5 +62,12 @@ public class Facede {
        return false;
     }
     
+    public boolean VerificaStatus(String status)
+    {
+        if(status.equals("Gold")||status.equals("Silver")||status.equals("Premium"))
+            return true;
+        else 
+            return false;
+    }
   
 }

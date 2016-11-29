@@ -51,4 +51,17 @@ public class CadastroClientes {
             resultado=tamanhodaLista/listaCliente.size();
              return resultado*100;
      }
+     
+     public double  porcemtagemDeHomemeMulher(char tipoGerenro)
+     {
+         int cont=0;
+        for(int i =0; i <listaCliente.size(); i++)
+        {
+            if(listaCliente.get(i).getGenero()=='M')
+            {
+               cont++;
+            }
+        }
+        return cont/listaCliente.size();
+     }
 }
