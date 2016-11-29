@@ -17,6 +17,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        TelaPrincipal tela = new TelaPrincipal();
         Cliente cliente = new Cliente("Pedro", "123123123120", 'M', 22);
         ClienteDAO clidb  = new  ClienteDAO();
         clidb.createConnection();
@@ -24,7 +25,8 @@ public class Main {
     //    clidb.insert(cliente);
         System.out.println("---- UPDATE------");       
       
-        clidb.updateDB(0);
+     //   clidb.updateDB(0);
+        
     }
     
 }

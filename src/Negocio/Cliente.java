@@ -9,7 +9,7 @@ package Negocio;
  *
  * @author 08203013
  */
-public class Cliente {
+public class Cliente implements tipoCliente{
     private String nome, cpf;
     private char genero;
     private int idade;
@@ -47,6 +47,11 @@ public class Cliente {
  
     public String toString(){
         return "Cliente{ nome=" +nome+ ",cpf=" + cpf + ",genero=" + genero + ",idade=" + idade + '}';
+    }
+
+    @Override
+    public String tipostatus(String status) {
+        return status;
     }
   
 }
