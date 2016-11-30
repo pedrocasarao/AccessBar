@@ -5,6 +5,7 @@
  */
 package Negocio;
 
+import Persistencia.ClienteDAO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,17 +14,19 @@ import java.util.List;
  * @author admin
  */
 public class CadastroClientes {
+    ClienteDAO clienteDAO = new ClienteDAO();
     ArrayList<Cliente> listaCliente = new ArrayList<>();
 
      public boolean adicionarCliente(String nome,String cpf,char genero,int idade, String vip)
      {
-         listaCliente.add(c);
+      
+         clienteDAO.insert(c);
          return true;
      }
      
      public boolean remove(Cliente c)
      {
-         listaCliente.remove(c);
+         clienteDAO.remove(c);
          return false;
      }
      
@@ -62,6 +65,17 @@ public class CadastroClientes {
         }
         return cont/listaCliente.size();
      }
+     public Cliente retornaClientedeDeterminadoCPF(String cpf)
+     {
+         
+         for(int i =0; i < listaCliente.size();i++)
+         {
+             if(listaCliente.get(i).getCpf().equals(cpf))
+             {
+                 return listaCliente.get(i);
+             }
+         }
+         return null;
      
      
      public boolean validaDados(String nome, String cpf, int idade){
