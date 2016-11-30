@@ -6,15 +6,15 @@
 package Apresentacao;
 
 import Negocio.Cliente;
-import Persistencia.ClienteDAO;
 
 /**
  *
  * @author eduva
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-ClienteDAO banco = new ClienteDAO();
-Facede face = Facede.getInstance();
+
+    Facade fachada = new Facade();
+
     /**
      * Creates new form TelaPrincipal
      */
@@ -176,13 +176,17 @@ Facede face = Facede.getInstance();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if(face.verificaNome(txtNome.getText())&&face.verificacpf(txtCPF.getText())&&face.verificaIdade(20)){
-           Cliente cliente = null;
-            if(btnFeminino.isEnabled())
-            {
-             cliente =  new  Cliente(txtNome.getText(),txtCPF.getText(),'F',20);    
-            }else{
-             cliente =  new  Cliente(txtNome.getText(),txtCPF.getText(),'M',20);
+        
+        char genero = btnFeminino.isSelected() ? 'F' : 'M';
+        
+        
+        
+        if (face.verificaNome(txtNome.getText()) && face.verificacpf(txtCPF.getText()) && face.verificaIdade(20)) {
+            Cliente cliente = null;
+            if (btnFeminino.isEnabled()) {
+                cliente = new Cliente(txtNome.getText(), txtCPF.getText(), 'F', 20);
+            } else {
+                cliente = new Cliente(txtNome.getText(), txtCPF.getText(), 'M', 20);
             }
             banco.insert(cliente);
         }

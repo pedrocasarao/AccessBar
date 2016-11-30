@@ -17,7 +17,7 @@ public class Cliente implements tipoCliente{
    
     public Cliente(){}
     
-    public Cliente(String nome, String cpf, char genero, int idade){
+    public Cliente(String nome, String cpf, char genero, int idade, Categorias status){
        
         this.nome=nome;
         this.cpf=cpf;

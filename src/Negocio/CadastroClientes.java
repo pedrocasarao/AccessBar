@@ -14,10 +14,8 @@ import java.util.List;
  */
 public class CadastroClientes {
     ArrayList<Cliente> listaCliente = new ArrayList<>();
-    
-    
-    
-     public boolean add(Cliente c)
+
+     public boolean adicionarCliente(String nome,String cpf,char genero,int idade, String vip)
      {
          listaCliente.add(c);
          return true;
@@ -63,5 +61,10 @@ public class CadastroClientes {
             }
         }
         return cont/listaCliente.size();
+     }
+     
+     
+     public boolean validaDados(String nome, String cpf, int idade){
+         return !nome.equals("") && (idade > 0 || idade < 120) && (cpf.replace(".", "").replace("-", "").length() == 11);
      }
 }
