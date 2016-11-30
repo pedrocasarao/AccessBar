@@ -92,6 +92,54 @@ public class ClienteDAO {
     }
     System.out.println("Operation done successfully");
   }
+   public void remove(Cliente cliente)
+  {
+    Connection c = null;
+    Statement stmt = null;
+    try {
+      Class.forName("org.sqlite.JDBC");
+      c = DriverManager.getConnection("jdbc:sqlite:ClienteDb.sqlite");
+      c.setAutoCommit(false);
+      System.out.println("Opened database successfully");
 
+      stmt = c.createStatement();
+      String sql = "DELETE FROM cliente WHERE"+cliente.getCpf()+" ;"; 
+      stmt.executeUpdate(sql);
+
+      stmt.close();
+      c.commit();
+      c.close();
+    } catch ( Exception e ) {
+      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+      System.exit(0);
+    }
+    System.out.println("remove with successfully");
+  }
+   
+      public void carregaCliente(Cliente cliente)
+  {
+    Connection c = null;
+    Statement stmt = null;
+    try {
+      Class.forName("org.sqlite.JDBC");
+      c = DriverManager.getConnection("jdbc:sqlite:ClienteDb.sqlite");
+      c.setAutoCommit(false);
+      System.out.println("Opened database successfully");
+
+      stmt = c.createStatement();
+      String sql = "SELECT FROM * cliente  ;"; 
+      stmt.executeUpdate(sql);
+
+      stmt.close();
+      c.commit();
+      c.close();
+    } catch ( Exception e ) {
+      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+      System.exit(0);
+    }
+    System.out.println("remove with successfully");
+  }
+
+   
    
 }
