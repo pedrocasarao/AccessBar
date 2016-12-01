@@ -15,15 +15,20 @@ import java.util.List;
  */
 public class CadastroClientes {
 
-    private ClienteDAO clienteDAO = new ClienteDAO();
-    private ArrayList<Cliente> listaCliente = new ArrayList<>();
+    private ClienteDAO clienteDAO;
+    private ArrayList<Cliente> listaCliente;
+
+    public CadastroClientes() {
+        this.clienteDAO = new ClienteDAO();
+        this.listaCliente = clienteDAO.consultarTodosClientes();
+    }
 
     public boolean adicionarCliente(Cliente cliente) {
-        return listaCliente.add(cliente) && clienteDAO.insert(cliente);
+        return listaCliente.add(cliente) && clienteDAO.gravarCliente(cliente);
     }
 
     public boolean remove(Cliente cliente) {
-        return clienteDAO.remove(cliente) && listaCliente.remove(cliente);
+        return clienteDAO.removerCliente(cliente) && listaCliente.remove(cliente);
     }
 
     public ArrayList<Cliente> listaClienteDeterminadoVIP(String status) {
@@ -31,16 +36,14 @@ public class CadastroClientes {
         for (int i = 0; i < listaCliente.size(); i++) {
             if (listaCliente.get(i).getStatus().equals(status)) {
                 aux.add(listaCliente.get(i));
-
             }
         }
         return aux;
     }
 
     public double porcentagemDetiposDeVipNoBar(String status) {
-        double resultado = 0;
         int tamanhodaLista = listaClienteDeterminadoVIP(status).size();
-        resultado = tamanhodaLista / listaCliente.size();
+        double resultado = tamanhodaLista / listaCliente.size();
         return resultado * 100;
     }
 
@@ -63,14 +66,13 @@ public class CadastroClientes {
         }
         return null;
     }
-    public ArrayList<Cliente>     BarNoMomento()
-    {
-        ArrayList<Cliente>  lista  = new ArrayList<Cliente>();
-            for(int i =0; i< listaCliente.size(); i++)
-            {
-                lista.add(listaCliente.get(i));
-            }
-            
-            return lista;
+
+    public ArrayList<Cliente> BarNoMomento() {
+        ArrayList<Cliente> lista = new ArrayList<Cliente>();
+        for (int i = 0; i < listaCliente.size(); i++) {
+            lista.add(listaCliente.get(i));
+        }
+
+        return lista;
     }
 }

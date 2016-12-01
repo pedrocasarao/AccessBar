@@ -5,8 +5,6 @@
  */
 package Apresentacao;
 
-import Negocio.Cliente;
-
 /**
  *
  * @author eduva
