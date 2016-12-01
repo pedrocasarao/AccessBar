@@ -18,7 +18,7 @@ public class Main {
      */
     public static void main(String[] args) {
         TelaPrincipal tela = new TelaPrincipal();
-        Cliente cliente = new Cliente("Pedro", "123123123120", 'M', 22);
+       // Cliente cliente = new Cliente("Pedro", "123123123120", 'M', 22);
         ClienteDAO clidb  = new  ClienteDAO();
         clidb.createConnection();
      //   System.out.println("---teste  insert----");

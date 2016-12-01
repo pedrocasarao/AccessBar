@@ -33,6 +33,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         btnGenero = new javax.swing.ButtonGroup();
         panelPrincipal = new javax.swing.JTabbedPane();
+        tabConsulta = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         tabCadastro = new javax.swing.JPanel();
         txtNome = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
@@ -42,98 +44,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnMasculino = new javax.swing.JRadioButton();
         btnFeminino = new javax.swing.JRadioButton();
         lblVip = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboVip = new javax.swing.JComboBox<>();
         btnAdd = new javax.swing.JButton();
-        tabConsulta = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        txtIdade = new javax.swing.JTextField();
+        lblVip1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        txtNome.setToolTipText("");
-
-        lblNome.setText("NOME");
-
-        lblCPF.setText("CPF");
-
-        try {
-            txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        lblGenero.setText("GENERO");
-
-        btnGenero.add(btnMasculino);
-        btnMasculino.setText("Masculino");
-
-        btnGenero.add(btnFeminino);
-        btnFeminino.setText("Feminino");
-
-        lblVip.setText("VIP");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Silver", "Gold", "Platinum" }));
-
-        btnAdd.setText("Adicionar");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout tabCadastroLayout = new javax.swing.GroupLayout(tabCadastro);
-        tabCadastro.setLayout(tabCadastroLayout);
-        tabCadastroLayout.setHorizontalGroup(
-            tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabCadastroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNome)
-                    .addComponent(txtCPF)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroLayout.createSequentialGroup()
-                        .addGroup(tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMasculino)
-                            .addComponent(lblNome)
-                            .addComponent(lblCPF)
-                            .addComponent(lblGenero))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addGroup(tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblVip)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCadastroLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAdd))
-                    .addGroup(tabCadastroLayout.createSequentialGroup()
-                        .addComponent(btnFeminino)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        tabCadastroLayout.setVerticalGroup(
-            tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabCadastroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCPF)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblGenero)
-                    .addComponent(lblVip))
-                .addGap(4, 4, 4)
-                .addGroup(tabCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMasculino)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFeminino)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(btnAdd)
-                .addContainerGap())
-        );
-
-        panelPrincipal.addTab("Cadastro", tabCadastro);
 
         javax.swing.GroupLayout tabConsultaLayout = new javax.swing.GroupLayout(tabConsulta);
         tabConsulta.setLayout(tabConsultaLayout);
@@ -161,6 +77,58 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         panelPrincipal.addTab("Relatorio", jPanel1);
 
+        tabCadastro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtNome.setToolTipText("");
+        tabCadastro.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 31, 505, -1));
+
+        lblNome.setText("NOME");
+        tabCadastro.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+
+        lblCPF.setText("CPF");
+        tabCadastro.add(lblCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, -1, -1));
+
+        try {
+            txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        tabCadastro.add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 77, 505, -1));
+
+        lblGenero.setText("GENERO");
+        tabCadastro.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        btnGenero.add(btnMasculino);
+        btnMasculino.setSelected(true);
+        btnMasculino.setText("Masculino");
+        tabCadastro.add(btnMasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 124, -1, -1));
+
+        btnGenero.add(btnFeminino);
+        btnFeminino.setText("Feminino");
+        tabCadastro.add(btnFeminino, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 20));
+
+        lblVip.setText("Idade");
+        tabCadastro.add(lblVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, 20));
+
+        comboVip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Silver", "Gold", "Platinum" }));
+        tabCadastro.add(comboVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 270, -1));
+
+        btnAdd.setText("Adicionar");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+        tabCadastro.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 260, 100, -1));
+
+        txtIdade.setToolTipText("");
+        tabCadastro.add(txtIdade, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 50, -1));
+
+        lblVip1.setText("VIP");
+        tabCadastro.add(lblVip1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, 20));
+
+        panelPrincipal.addTab("Cadastro", tabCadastro);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -176,19 +144,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        
+
         char genero = btnFeminino.isSelected() ? 'F' : 'M';
-        
-        
-        
-        if (face.verificaNome(txtNome.getText()) && face.verificacpf(txtCPF.getText()) && face.verificaIdade(20)) {
-            Cliente cliente = null;
-            if (btnFeminino.isEnabled()) {
-                cliente = new Cliente(txtNome.getText(), txtCPF.getText(), 'F', 20);
-            } else {
-                cliente = new Cliente(txtNome.getText(), txtCPF.getText(), 'M', 20);
-            }
-            banco.insert(cliente);
+        if (fachada.validarCampos(txtNome.getText(), txtCPF.getText(), Integer.getInteger(txtIdade.getText()))) {
+            fachada.realizarCadastro(txtNome.getText(), txtCPF.getText(), Integer.getInteger(txtIdade.getText()), comboVip.getSelectedItem().toString(), genero);
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -232,16 +191,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton btnFeminino;
     private javax.swing.ButtonGroup btnGenero;
     private javax.swing.JRadioButton btnMasculino;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> comboVip;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblVip;
+    private javax.swing.JLabel lblVip1;
     private javax.swing.JTabbedPane panelPrincipal;
     private javax.swing.JPanel tabCadastro;
     private javax.swing.JPanel tabConsulta;
     private javax.swing.JFormattedTextField txtCPF;
+    private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,7 +27,7 @@ public class ClienteDAO {
 
     }
      
-  public void insert(Cliente cliente)
+  public boolean insert(Cliente cliente)
   {
     Connection c = null;
     Statement stmt = null;
@@ -50,6 +50,7 @@ public class ClienteDAO {
       System.exit(0);
     }
     System.out.println("Records created successfully");
+    return true;
   }
    public  void updateDB( int posicaoDb)
   {
@@ -92,7 +93,7 @@ public class ClienteDAO {
     }
     System.out.println("Operation done successfully");
   }
-   public void remove(Cliente cliente)
+   public boolean remove(Cliente cliente)
   {
     Connection c = null;
     Statement stmt = null;
@@ -114,6 +115,7 @@ public class ClienteDAO {
       System.exit(0);
     }
     System.out.println("remove with successfully");
+    return true;
   }
    
       public void carregaCliente(Cliente cliente)
