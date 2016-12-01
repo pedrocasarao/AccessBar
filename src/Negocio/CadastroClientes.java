@@ -63,4 +63,14 @@ public class CadastroClientes {
         }
         return null;
     }
+    public ArrayList<Cliente>     BarNoMomento()
+    {
+        ArrayList<Cliente>  lista  = new ArrayList<Cliente>();
+            for(int i =0; i< listaCliente.size(); i++)
+            {
+                lista.add(listaCliente.get(i));
+            }
+            
+            return lista;
+    }
 }

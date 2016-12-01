@@ -5,10 +5,11 @@
         <group>
             <file>file:/C:/Users/admin/Documents/NetBeansProjects/AccessBar/src/Negocio/Cliente.java</file>
             <file>file:/C:/Users/admin/Documents/NetBeansProjects/AccessBar/src/Negocio/CadastroClientes.java</file>
-            <file>file:/C:/Users/admin/Documents/NetBeansProjects/AccessBar/src/Apresentacao/Facede.java</file>
             <file>file:/C:/Users/admin/Documents/NetBeansProjects/AccessBar/src/Negocio/tipoCliente.java</file>
             <file>file:/C:/Users/admin/Documents/NetBeansProjects/AccessBar/src/Apresentacao/TelaPrincipal.java</file>
             <file>file:/C:/Users/admin/Documents/NetBeansProjects/AccessBar/src/Persistencia/ClienteDAO.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/AccessBar/src/Apresentacao/Facade.java</file>
+            <file>file:/C:/Users/admin/Documents/NetBeansProjects/AccessBar/src/Apresentacao/Main.java</file>
         </group>
     </open-files>
 </project-private>
