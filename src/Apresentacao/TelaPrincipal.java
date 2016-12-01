@@ -33,8 +33,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         btnGenero = new javax.swing.ButtonGroup();
         panelPrincipal = new javax.swing.JTabbedPane();
-        tabConsulta = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaResultadodosRelatorio = new javax.swing.JTextArea();
+        jRadioButtonRelatorioGenero = new javax.swing.JRadioButton();
+        jRadioButtonRelatorioVIps = new javax.swing.JRadioButton();
+        lblRelatorioVips = new javax.swing.JLabel();
+        lblRelatorioGenero = new javax.swing.JLabel();
         tabCadastro = new javax.swing.JPanel();
         txtNome = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
@@ -48,31 +53,71 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         txtIdade = new javax.swing.JTextField();
         lblVip1 = new javax.swing.JLabel();
+        tabConsulta = new javax.swing.JPanel();
+        jlblDigiteoCpf = new javax.swing.JLabel();
+        txtDigiteOcpf = new javax.swing.JTextField();
+        jBtnPesquisa = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaResultadoDaPesquisa = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout tabConsultaLayout = new javax.swing.GroupLayout(tabConsulta);
-        tabConsulta.setLayout(tabConsultaLayout);
-        tabConsultaLayout.setHorizontalGroup(
-            tabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
-        );
-        tabConsultaLayout.setVerticalGroup(
-            tabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 262, Short.MAX_VALUE)
-        );
+        jTextAreaResultadodosRelatorio.setColumns(20);
+        jTextAreaResultadodosRelatorio.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaResultadodosRelatorio);
 
-        panelPrincipal.addTab("Consulta", tabConsulta);
+        jRadioButtonRelatorioGenero.setText("Genero");
+        jRadioButtonRelatorioGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonRelatorioGeneroActionPerformed(evt);
+            }
+        });
+
+        jRadioButtonRelatorioVIps.setText("Categoria");
+        jRadioButtonRelatorioVIps.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonRelatorioVIpsActionPerformed(evt);
+            }
+        });
+
+        lblRelatorioVips.setText("Relatorio de VIPS:");
+
+        lblRelatorioGenero.setText("Relatorio de Genero:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonRelatorioGenero)
+                            .addComponent(lblRelatorioGenero))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRelatorioVips)
+                            .addComponent(jRadioButtonRelatorioVIps))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(84, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRelatorioVips)
+                    .addComponent(lblRelatorioGenero))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonRelatorioVIps)
+                    .addComponent(jRadioButtonRelatorioGenero))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         panelPrincipal.addTab("Relatorio", jPanel1);
@@ -129,6 +174,56 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         panelPrincipal.addTab("Cadastro", tabCadastro);
 
+        jlblDigiteoCpf.setText("Digite o CPF: ");
+
+        txtDigiteOcpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDigiteOcpfActionPerformed(evt);
+            }
+        });
+
+        jBtnPesquisa.setText("Pesquisar");
+        jBtnPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnPesquisaActionPerformed(evt);
+            }
+        });
+
+        txtAreaResultadoDaPesquisa.setColumns(20);
+        txtAreaResultadoDaPesquisa.setRows(5);
+        jScrollPane1.setViewportView(txtAreaResultadoDaPesquisa);
+
+        javax.swing.GroupLayout tabConsultaLayout = new javax.swing.GroupLayout(tabConsulta);
+        tabConsulta.setLayout(tabConsultaLayout);
+        tabConsultaLayout.setHorizontalGroup(
+            tabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabConsultaLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(tabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addGroup(tabConsultaLayout.createSequentialGroup()
+                        .addComponent(jlblDigiteoCpf)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDigiteOcpf, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jBtnPesquisa)))
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
+        tabConsultaLayout.setVerticalGroup(
+            tabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabConsultaLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(tabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlblDigiteoCpf)
+                    .addComponent(txtDigiteOcpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnPesquisa))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        panelPrincipal.addTab("Consulta", tabConsulta);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,6 +245,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
             fachada.realizarCadastro(txtNome.getText(), txtCPF.getText(), Integer.getInteger(txtIdade.getText()), comboVip.getSelectedItem().toString(), genero);
         }
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void jBtnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnPesquisaActionPerformed
+
+    private void txtDigiteOcpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDigiteOcpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDigiteOcpfActionPerformed
+
+    private void jRadioButtonRelatorioGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonRelatorioGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonRelatorioGeneroActionPerformed
+
+    private void jRadioButtonRelatorioVIpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonRelatorioVIpsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonRelatorioVIpsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,16 +303,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGenero;
     private javax.swing.JRadioButton btnMasculino;
     private javax.swing.JComboBox<String> comboVip;
+    private javax.swing.JButton jBtnPesquisa;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButtonRelatorioGenero;
+    private javax.swing.JRadioButton jRadioButtonRelatorioVIps;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextAreaResultadodosRelatorio;
+    private javax.swing.JLabel jlblDigiteoCpf;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblRelatorioGenero;
+    private javax.swing.JLabel lblRelatorioVips;
     private javax.swing.JLabel lblVip;
     private javax.swing.JLabel lblVip1;
     private javax.swing.JTabbedPane panelPrincipal;
     private javax.swing.JPanel tabCadastro;
     private javax.swing.JPanel tabConsulta;
+    private javax.swing.JTextArea txtAreaResultadoDaPesquisa;
     private javax.swing.JFormattedTextField txtCPF;
+    private javax.swing.JTextField txtDigiteOcpf;
     private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
