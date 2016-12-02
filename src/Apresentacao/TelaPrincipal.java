@@ -5,18 +5,22 @@
  */
 package Apresentacao;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author eduva
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    Facade fachada = new Facade();
+    private Controller controller;
 
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
+        controller = new Controller();
         initComponents();
     }
 
@@ -30,9 +34,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         btnGenero = new javax.swing.ButtonGroup();
+        btnRelatorios = new javax.swing.ButtonGroup();
         panelPrincipal = new javax.swing.JTabbedPane();
-        tabConsulta = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
         tabCadastro = new javax.swing.JPanel();
         txtNome = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
@@ -43,55 +46,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnFeminino = new javax.swing.JRadioButton();
         lblVip = new javax.swing.JLabel();
         comboVip = new javax.swing.JComboBox<>();
-        btnAdd = new javax.swing.JButton();
+        btnConsulta = new javax.swing.JButton();
         txtIdade = new javax.swing.JTextField();
         lblVip1 = new javax.swing.JLabel();
+        btnAdd = new javax.swing.JButton();
+        tabRelatorio = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaResultadodosRelatorio = new javax.swing.JTextArea();
+        lblTotal = new javax.swing.JLabel();
+        btnGerarRelatorio = new javax.swing.JButton();
+        lblMulheres = new javax.swing.JLabel();
+        lblHomens = new javax.swing.JLabel();
+        lblSilver = new javax.swing.JLabel();
+        lblGold = new javax.swing.JLabel();
+        lblPlatinum = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout tabConsultaLayout = new javax.swing.GroupLayout(tabConsulta);
-        tabConsulta.setLayout(tabConsultaLayout);
-        tabConsultaLayout.setHorizontalGroup(
-            tabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
-        );
-        tabConsultaLayout.setVerticalGroup(
-            tabConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 262, Short.MAX_VALUE)
-        );
-
-        panelPrincipal.addTab("Consulta", tabConsulta);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
-        );
-
-        panelPrincipal.addTab("Relatorio", jPanel1);
 
         tabCadastro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtNome.setToolTipText("");
-        tabCadastro.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 31, 505, -1));
+        tabCadastro.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 505, -1));
 
         lblNome.setText("NOME");
-        tabCadastro.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        tabCadastro.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         lblCPF.setText("CPF");
-        tabCadastro.add(lblCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, -1, -1));
+        tabCadastro.add(lblCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         try {
             txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        tabCadastro.add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 77, 505, -1));
+        tabCadastro.add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 505, -1));
 
         lblGenero.setText("GENERO");
         tabCadastro.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
@@ -111,6 +99,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         comboVip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Silver", "Gold", "Platinum" }));
         tabCadastro.add(comboVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 270, -1));
 
+        btnConsulta.setText("Consultar");
+        btnConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaActionPerformed(evt);
+            }
+        });
+        tabCadastro.add(btnConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 100, -1));
+
+        txtIdade.setToolTipText("");
+        tabCadastro.add(txtIdade, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 50, -1));
+
+        lblVip1.setText("VIP");
+        tabCadastro.add(lblVip1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, 20));
+
         btnAdd.setText("Adicionar");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,13 +121,77 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         tabCadastro.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 260, 100, -1));
 
-        txtIdade.setToolTipText("");
-        tabCadastro.add(txtIdade, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 50, -1));
+        panelPrincipal.addTab("Cadastro / Consulta", tabCadastro);
 
-        lblVip1.setText("VIP");
-        tabCadastro.add(lblVip1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, 20));
+        jTextAreaResultadodosRelatorio.setColumns(20);
+        jTextAreaResultadodosRelatorio.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaResultadodosRelatorio);
 
-        panelPrincipal.addTab("Cadastro", tabCadastro);
+        lblTotal.setText("Total: 0000");
+
+        btnGerarRelatorio.setText("Gerar Relatorio");
+        btnGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerarRelatorioActionPerformed(evt);
+            }
+        });
+
+        lblMulheres.setText("Mulheres: 0000");
+
+        lblHomens.setText("Homens: 0000");
+
+        lblSilver.setText("Silver: 0000");
+
+        lblGold.setText("Gold: 0000");
+
+        lblPlatinum.setText("Platinum: 0000");
+
+        javax.swing.GroupLayout tabRelatorioLayout = new javax.swing.GroupLayout(tabRelatorio);
+        tabRelatorio.setLayout(tabRelatorioLayout);
+        tabRelatorioLayout.setHorizontalGroup(
+            tabRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabRelatorioLayout.createSequentialGroup()
+                .addGroup(tabRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabRelatorioLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnGerarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tabRelatorioLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(tabRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(tabRelatorioLayout.createSequentialGroup()
+                                .addComponent(lblHomens)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblMulheres)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblSilver)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblGold)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblPlatinum)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblTotal)))))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        tabRelatorioLayout.setVerticalGroup(
+            tabRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabRelatorioLayout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addGroup(tabRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTotal)
+                    .addComponent(lblGold)
+                    .addComponent(lblMulheres)
+                    .addComponent(lblHomens)
+                    .addComponent(lblSilver)
+                    .addComponent(lblPlatinum))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnGerarRelatorio)
+                .addGap(7, 7, 7))
+        );
+
+        panelPrincipal.addTab("Relatorio", tabRelatorio);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,12 +208,63 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-
         char genero = btnFeminino.isSelected() ? 'F' : 'M';
-        if (fachada.validarCampos(txtNome.getText(), txtCPF.getText(), Integer.getInteger(txtIdade.getText()))) {
-            fachada.realizarCadastro(txtNome.getText(), txtCPF.getText(), Integer.getInteger(txtIdade.getText()), comboVip.getSelectedItem().toString(), genero);
+
+        if (controller.validarCampos(txtNome.getText(), txtCPF.getText(), (txtIdade.getText().equals("") ? 0 : Integer.valueOf(txtIdade.getText())))) {
+            if (controller.realizarCadastro(txtNome.getText(), txtCPF.getText(), Integer.valueOf(txtIdade.getText()), comboVip.getSelectedItem().toString(), genero)) {
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+
+                txtNome.setText("");
+                txtCPF.setText("");
+                txtIdade.setText("");
+                comboVip.getItemAt(0);
+                btnMasculino.setSelected(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao realizar o cadastro!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao validar, por favor confira os dados do cadastro!");
         }
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
+        ClienteModel cliente = controller.consultaCliente(txtCPF.getText());
+        if (cliente == null) {
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
+        } else {
+            txtNome.setText(cliente.getNome());
+            txtCPF.setText(cliente.getCpf());
+            txtIdade.setText(cliente.getIdade());
+
+            for (int i = 0; i < comboVip.getItemCount(); i++) {
+                if (comboVip.getItemAt(i).equals(cliente.getStatus())) {
+                    comboVip.setSelectedIndex(i);
+                }
+            }
+
+            if (cliente.getGenero() == 'F') {
+                btnFeminino.setSelected(true);
+            } else {
+                btnMasculino.setSelected(true);
+            }
+
+            JOptionPane.showMessageDialog(null, "Busca realizada com sucesso!");
+        }
+
+
+    }//GEN-LAST:event_btnConsultaActionPerformed
+
+    private void btnGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarRelatorioActionPerformed
+        jTextAreaResultadodosRelatorio.setText(controller.relatorioClientes());
+        lblHomens.setText("Homens:" + controller.getPercentualHomem() + "%");
+        lblMulheres.setText("Mulheres:" + controller.getPercentualMulher() + "%");
+        lblSilver.setText("Silver:" + controller.getSilver() + "%");
+        lblGold.setText("Gold:" + controller.getGold() + "%");
+        lblPlatinum.setText("Platinum:" + controller.getPlatinum() + "%");
+        lblTotal.setText("Total:" + controller.getTotal());
+
+    }//GEN-LAST:event_btnGerarRelatorioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,28 +294,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaPrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaPrincipal().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnConsulta;
     private javax.swing.JRadioButton btnFeminino;
     private javax.swing.ButtonGroup btnGenero;
+    private javax.swing.JButton btnGerarRelatorio;
     private javax.swing.JRadioButton btnMasculino;
+    private javax.swing.ButtonGroup btnRelatorios;
     private javax.swing.JComboBox<String> comboVip;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextAreaResultadodosRelatorio;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblGenero;
+    private javax.swing.JLabel lblGold;
+    private javax.swing.JLabel lblHomens;
+    private javax.swing.JLabel lblMulheres;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblPlatinum;
+    private javax.swing.JLabel lblSilver;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblVip;
     private javax.swing.JLabel lblVip1;
     private javax.swing.JTabbedPane panelPrincipal;
     private javax.swing.JPanel tabCadastro;
-    private javax.swing.JPanel tabConsulta;
+    private javax.swing.JPanel tabRelatorio;
     private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNome;

@@ -31,30 +31,46 @@ public class CadastroClientes {
         return clienteDAO.removerCliente(cliente) && listaCliente.remove(cliente);
     }
 
-    public ArrayList<Cliente> listaClienteDeterminadoVIP(String status) {
+    public ArrayList<Cliente> listaClientesVip() {
         ArrayList<Cliente> aux = new ArrayList<>();
         for (int i = 0; i < listaCliente.size(); i++) {
-            if (listaCliente.get(i).getStatus().equals(status)) {
+            if (listaCliente.get(i).getStatus()!= null) {
                 aux.add(listaCliente.get(i));
             }
         }
         return aux;
     }
 
-    public double porcentagemDetiposDeVipNoBar(String status) {
-        int tamanhodaLista = listaClienteDeterminadoVIP(status).size();
-        double resultado = tamanhodaLista / listaCliente.size();
-        return resultado * 100;
-    }
-
-    public double porcemtagemDeHomemeMulher(char tipoGerenro) {
-        int cont = 0;
-        for (int i = 0; i < listaCliente.size(); i++) {
-            if (listaCliente.get(i).getGenero() == 'M') {
+    public double porcentagemDeDeVipNoBar(int status) {
+        ArrayList<Cliente> listaVip = listaClientesVip();
+        int cont=0;
+        Categorias atual = null;
+        if(status == 1){
+                atual = Categorias.Silver;
+            }else if(status == 2){
+                atual = Categorias.Gold;
+            }else if(status == 3){
+                atual = Categorias.Platinum;
+            }
+        
+        for(Cliente c: listaVip){
+            if(c.getStatus().equals(atual)){
                 cont++;
             }
         }
-        return cont / listaCliente.size();
+        
+        //double resultado = tamanhodaLista / listaCliente.size();
+        return  (cont * 100) / listaVip.size();
+    }
+
+    public double porcemtagemDeHomemeMulher(char tipoGenero) {
+        int cont = 0;
+        for (int i = 0; i < listaCliente.size(); i++) {
+            if (listaCliente.get(i).getGenero() == tipoGenero) {
+                cont++;
+            }
+        }
+        return (cont * 100) / listaCliente.size();
     }
 
     public Cliente retornaClientedeDeterminadoCPF(String cpf) {
@@ -67,12 +83,16 @@ public class CadastroClientes {
         return null;
     }
 
-    public ArrayList<Cliente> BarNoMomento() {
+    public ArrayList<Cliente> listaClientes() {
         ArrayList<Cliente> lista = new ArrayList<Cliente>();
         for (int i = 0; i < listaCliente.size(); i++) {
             lista.add(listaCliente.get(i));
         }
 
         return lista;
+    }
+    
+    public int getNumeroClientes(){
+        return listaCliente.size();
     }
 }

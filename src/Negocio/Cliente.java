@@ -5,6 +5,10 @@
  */
 package Negocio;
 
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Calendar;
+
 /**
  *
  * @author 08203013
@@ -13,6 +17,8 @@ public class Cliente implements tipoCliente{
     private String nome, cpf;
     private char genero;
     private int idade;
+    private String horarioEntrada;
+    private String horarioSaida;
     private Categorias status;
    
     public Cliente(){}
@@ -23,8 +29,16 @@ public class Cliente implements tipoCliente{
         this.cpf=cpf;
         this.genero=genero;
         this.idade=idade;
-        this.status = null;
+        this.status = status;
         
+        Calendar c = Calendar.getInstance();
+        Date data = c.getTime();
+        DateFormat f = DateFormat.getDateInstance(DateFormat.FULL);
+	horarioEntrada = c.get(Calendar.HOUR_OF_DAY - 1) + "h:" + c.get(Calendar.MINUTE)+ "min de " + f.format(data);
+        horarioSaida = c.get(Calendar.HOUR_OF_DAY) + "h:" + c.get(Calendar.MINUTE)+ "min de " + f.format(data);
+        
+        System.out.println(horarioEntrada);
+        System.out.println(horarioSaida);
     }
    public String getNome(){
         return nome;
@@ -43,7 +57,16 @@ public class Cliente implements tipoCliente{
     public int getIdade() {
         return idade;
     }
+
+    public String getHorarioEntrada() {
+        return horarioEntrada;
+    }
+
+    public String getHorarioSaida() {
+        return horarioSaida;
+    }
    
+    
  
     public String toString(){
         return "Cliente{ nome=" +nome+ ",cpf=" + cpf + ",genero=" + genero + ",idade=" + idade + '}';

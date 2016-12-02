@@ -64,14 +64,13 @@ public class ClienteDAO {
         Statement state = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:ClienteDb.sqlite");
+            conn = DriverManager.getConnection("jdbc:sqlite:Database.sqlite");
             conn.setAutoCommit(false);
-            System.out.println("Opened database successfully");
+          //  System.out.println("Opened database successfully");
 
             state = conn.createStatement();
             ResultSet resultado = state.executeQuery("SELECT * FROM CLIENTE;");
             while (resultado.next()) { //utilizado para pegar todos os resultados.
-                resultado.next();
                 String rCpf = resultado.getString("cpf");
                 String rNome = resultado.getString("nome");
                 int rIdade = resultado.getInt("idade");
@@ -92,7 +91,7 @@ public class ClienteDAO {
             state.close();
             conn.close();
 
-            System.out.println("Operation done successfully");
+          //  System.out.println("Operation done successfully");
             return clientes;
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -107,13 +106,13 @@ public class ClienteDAO {
         Statement state = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:ClienteDb.sqlite");
+            conn = DriverManager.getConnection("jdbc:sqlite:Database.sqlite");
             conn.setAutoCommit(false);
-            System.out.println("Opened database successfully");
+           // System.out.println("Opened database successfully");
 
             state = conn.createStatement();
             String sql = "INSERT INTO cliente "
-                    + "VALUES(" + cliente.getCpf() + "," + cliente.getNome() + "," + cliente.getGenero() + "," + cliente.getIdade() + "," + (cliente.getStatus() == Categorias.Silver ? 1 : cliente.getStatus() == Categorias.Gold ? 2 : cliente.getStatus() == Categorias.Platinum ? 3 : 0) + ");";
+                    + "VALUES(\'" + cliente.getCpf() + "\',\'" + cliente.getNome() + "\',\'" + cliente.getGenero() + "\'," + cliente.getIdade() + "," + (cliente.getStatus() == Categorias.Silver ? 1 : cliente.getStatus() == Categorias.Gold ? 2 : cliente.getStatus() == Categorias.Platinum ? 3 : 0) + ");";
             state.executeUpdate(sql);
 
             state.close();
@@ -123,7 +122,7 @@ public class ClienteDAO {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-        System.out.println("Records created successfully");
+       // System.out.println("Records created successfully");
         return true;
     }
 
@@ -132,12 +131,12 @@ public class ClienteDAO {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:ClienteDb.sqlite");
+            c = DriverManager.getConnection("jdbc:sqlite:Database.sqlite");
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully");
+            //System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
-            String sql = "DELETE FROM cliente WHERE" + cliente.getCpf() + " ;";
+            String sql = "DELETE FROM cliente WHERE CPF= \'" + cliente.getCpf() + "\';";
             stmt.executeUpdate(sql);
 
             stmt.close();
@@ -147,7 +146,7 @@ public class ClienteDAO {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-        System.out.println("remove with successfully");
+        //System.out.println("remove with successfully");
         return true;
     }
 
