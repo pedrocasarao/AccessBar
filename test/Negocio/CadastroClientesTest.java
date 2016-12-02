@@ -67,7 +67,7 @@ public class CadastroClientesTest {
         String status = "";
         CadastroClientes instance = new CadastroClientes();
         ArrayList<Cliente> expResult = null;
-        ArrayList<Cliente> result = instance.listaClienteDeterminadoVIP(status);
+        ArrayList<Cliente> result = instance.listaClientesVip();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -79,10 +79,10 @@ public class CadastroClientesTest {
     @Test
     public void testPorcentagemDetiposDeVipNoBar() {
         System.out.println("porcentagemDetiposDeVipNoBar");
-        String status = "";
+        int status = 1;
         CadastroClientes instance = new CadastroClientes();
         double expResult = 0.0;
-        double result = instance.porcentagemDetiposDeVipNoBar(status);
+        double result = instance.porcentagemDeDeVipNoBar(status);
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -126,7 +126,7 @@ public class CadastroClientesTest {
         System.out.println("BarNoMomento");
         CadastroClientes instance = new CadastroClientes();
         ArrayList<Cliente> expResult = null;
-        ArrayList<Cliente> result = instance.BarNoMomento();
+        ArrayList<Cliente> result = instance.listaClientes();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
